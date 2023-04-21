@@ -1,0 +1,71 @@
+/* Reset CSS per rimuovere i margini e i padding predefiniti */
+body, html {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Contenitore principale */
+  .container {
+    width: 100%;
+    max-width: 600px; /* Larghezza massima del contenitore */
+    margin: 0 auto; /* Centra il contenitore orizzontalmente */
+    padding: 40px; /* Aggiunge spazio di riempimento interno */
+    box-sizing: border-box; /* Include il padding nel calcolo della larghezza */
+  }
+  
+  /* Form di registrazione utente */
+  form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  form button[type="submit"] {
+    width: 100%;
+    padding: 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Link per la pagina di login */
+  .form-links {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .form-links a {
+    color: #007bff;
+    margin-right: 10px;
+  }
+  
+  .form-links a:hover {
+    text-decoration: underline;
+  }

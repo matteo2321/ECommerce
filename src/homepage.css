@@ -80,40 +80,26 @@ footer {
     cursor: pointer;
 }
 
-/* Stile del banner */
-.banner {
+#banner {
     width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
+    height: 300px;
     position: relative;
-}
+    overflow: hidden;
+  }
+  .slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .slide.active {
+    opacity: 1;
+  }
 
-/* Stile del contenitore per gli elementi del banner */
-.banner-container {
-    display: inline-block;
-    white-space: nowrap;
-    animation: bannerAnimation 10s linear infinite;
-    /* Imposta l'animazione del banner */
-}
-
-/* Animazione del banner */
-@keyframes bannerAnimation {
-    from {
-        transform: translateX(100%);
-        /* Partenza a destra del contenitore */
-    }
-
-    to {    
-        transform: translateX(-100%);
-        /* Arrivo a sinistra del contenitore */
-    }
-}
-
-/* Stile degli elementi del banner */
-.banner-item {
-    display: inline-block;
-    padding: 100px;
-    background-color: #FF9900;
-    color: #fff;
-    font-size: 24px;
+#bannerimg{
+    width: 5px;
+    height: 5px;
 }

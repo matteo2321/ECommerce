@@ -20,7 +20,7 @@ if (isset($_POST["filtroUser"])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -45,111 +45,38 @@ if (isset($_POST["filtroUser"])) {
         </div>
     </header>
     <div class="banner">
-        <div name="carouselbanner" id="banner">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
+        <div class="bs-example">
+            <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <?php
                     $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=f.id join categoria as c on p.IdCategoria=c.id  where 1';
                     $result = $conn->query($sql);
-                    $row = $result->fetch_assoc();
-                    echo '<div class="item active">';
-                    echo "<img class='card-img-top' src='" . $row["path"] . "' alt='" . $row["titolo"] . "'>";
-                    echo '</div>';
+                    $counter = 1;
+                    while ($row = $result->fetch_assoc()&&$counter<3) {
+                    ?>
+                        <div class="item<?php if ($counter <= 1) {
+                                            echo " active";
+                                        } ?>">
+                            <a href="">
+                                <img  style="height: 400px; width: 400px;" alt="First slide image" src="<?php echo $row['path']; ?>" />
+                            </a>
+                            <div class="finlay-carousel-caption">
+                                <h3><?php echo $row['titolo']; ?></h3>
 
-                    while ($result->fetch_assoc()) {
-                        echo '<div class="item">';
-                        echo "<img class='card-img-top' src='" . $row["path"] . "' alt='" . $row["titolo"] . "'>";
-                        echo '</div>';
+                            </div>
+                        </div>
+                    <?php
+                        $counter++;
                     }
                     ?>
-                    
+
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-captions" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-captions" data-slide-to="2"></li>
+                    </ol>
                 </div>
-
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
-
-
-
-
-            <div id="carouselExampleInterval" class="carousel slide" data-mdb-ride="carousel">
-                <div class="carousel-inner">
-                    <?php
-                    #        $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=f.id join categoria as c on p.IdCategoria=c.id  where 1';
-                    #        $result = $conn->query($sql);
-                    #        while ($row = $result->fetch_assoc()) {
-                    #            #if ($row["id"] <= 4){
-                    #                echo '<div class="carousel-item active" data-mdb-interval="10000">';
-                    #                echo "<div class='card mb-4 box-shadow'>";
-                    #                echo "<img class='card-img-top' src='" . $row["path"] . "' alt='" . $row["titolo"] . "'>";
-                    #                echo "<div class='card-body'>";
-                    #                echo "<h3>" . $row["titolo"] . "</h3>";
-                    #                echo "<p class='card-text'>" . $row["descrizione"] . "</p>";
-                    #                echo "<div class='d-flex justify-content-between align-items-center'>";
-                    #                echo "<div class='btn-group'>";
-                    #                echo "<a href='#' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
-                    #                echo "</div>";
-                    #                echo "<h4 class='card-price'>" . $row["prezzo"] . "€</h4>";
-                    #                echo "</div>";
-                    #                echo "</div>";
-                    #                echo "</div>";
-                    #                echo '</div>';
-                    #
-                    #            #}
-                    #        }
-                    #
-                    #        
-                    ?>
-                </div>
-                <button class="carousel-control-prev" data-mdb-target="#carouselExampleInterval" type="button" data-mdb-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" data-mdb-target="#carouselExampleInterval" type="button" data-mdb-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
     <br>

@@ -1,5 +1,5 @@
 <?php
-include("connection.php");
+include("Connection.php");
 ?>
 
 <html>
@@ -8,6 +8,12 @@ include("connection.php");
     <link rel="stylesheet" href="loginStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -26,7 +32,7 @@ include("connection.php");
                     <input type="text" id="cognome" name="cognome" required>
 
                     <label for="mail">email:</label>
-                    <input type="mail" id="mail" name="mail" required>
+                    <input type="email" id="mail" name="mail" required>
 
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
@@ -36,7 +42,7 @@ include("connection.php");
 
                     <button type="submit">Registrati</button>
                 </form>
-                <a href="registrazione.php">
+                <a href="Login.php">
                     <h5>Se sei già registrato...</h5>
                 </a>
             </div>

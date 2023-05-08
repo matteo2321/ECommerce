@@ -1,17 +1,17 @@
 <?php 
 session_start();
-include("connection.php");
+include("Connection.php");
 
 
 
 $nome = $_POST['nome'];
 $cognome = $_POST['cognome'];
-$mail = $_POST['mail'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 $indirizzo = $_POST['indirizzo'];
 
-$sql = "INSERT into utenti (nome, cognome,indirizzo,mail,password) 
-        values('$nome','$cognome','$indirizzo','$mail','$password')";
+$sql = "INSERT into utente (nome, cognome,indirizzo,email,password) 
+        values('$nome','$cognome','$indirizzo','$email','$password')";
       $conn->query($sql);
       header("location: Login.php");
 

@@ -1,13 +1,13 @@
 <?php 
 session_start();
-include("connection.php");
+include("Connection.php");
 
 // check if form's credential are ok 
-$mail = $_POST["mail"];
+$email = $_POST["email"];
 $password = $_POST["password"];
 
 // query
-$sql = "SELECT * from utenti where mail='". $mail ."'and password='".$password."'";
+$sql = "SELECT * from utente where email='". $email ."'and password='".$password."'";
 
 $result = $conn->query($sql);
 if($result->num_rows > 0){
@@ -16,10 +16,9 @@ if($result->num_rows > 0){
     $_SESSION["nome"]=$row["nome"];
     $_SESSION["cognome"]=$row["cognome"];
     $_SESSION["indirizzo"]=$row["indirizzo"];
-    $_SESSION["mail"]=$row["mail"];
+    $_SESSION["email"]=$row["email"];
     $_SESSION["password"]=$row["password"];
     $_SESSION["admin"]=$row["admin"];
-    $_SESSION["username"]=$row["username"];
     
 
     header('Location: index.php');

@@ -33,8 +33,15 @@ if (isset($_POST["filtroUser"])) {
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="#">Carrello</a></li>
-                <li><a href="AccountRedirect.php">account<?php //echo $_SESSION["nome"].$_SESSION["cognome"];
-                                                            ?></a></li>
+                <li><a href="AccountRedirect.php">
+                    <?php if (isset($_SESSION["id"])) {
+                        echo $_SESSION["nome"].$_SESSION["cognome"];
+                    }
+                    else{
+                        echo "Accedi";
+                    }
+                    
+                    ?></a></li>
             </ul>
         </nav>
         <div class="search-bar">
@@ -49,31 +56,29 @@ if (isset($_POST["filtroUser"])) {
             <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <?php
-                    $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=f.id join categoria as c on p.IdCategoria=c.id  where 1';
+                    $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=idf join categoria as c on p.IdCategoria=idc  where 1';
                     $result = $conn->query($sql);
-                    $counter = 1;
-                    while ($row = $result->fetch_assoc()&&$counter<3) {
+                    $rows = $result->fetch_all(MYSQLI_ASSOC);
+                    foreach ($rows as $key => $row) {
                     ?>
-                        <div class="item<?php if ($counter <= 1) {
+                        <div class="item<?php if ($key == 0) {
                                             echo " active";
                                         } ?>">
                             <a href="">
-                                <img  style="height: 400px; width: 400px;" alt="First slide image" src="<?php echo $row['path']; ?>" />
+                                <img style="height: 400px; width: 400px;" alt="First slide image" src="<?php echo $row['path']; ?>" />
                             </a>
                             <div class="finlay-carousel-caption">
                                 <h3><?php echo $row['titolo']; ?></h3>
-
                             </div>
                         </div>
                     <?php
-                        $counter++;
                     }
                     ?>
 
                     <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-captions" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-captions" data-slide-to="2"></li>
+                    <?php foreach ($rows as $key => $row) { ?>
+                    <li data-target="#carousel-example-captions" data-slide-to="<?php echo $key; ?>" <?php if ($key == 0) { echo "class='active'"; } ?>></li>
+                    <?php } ?>
                     </ol>
                 </div>
             </div>
@@ -89,7 +94,7 @@ if (isset($_POST["filtroUser"])) {
 
             <?php
             if ($filtroUser != "") {
-                $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=f.id join categoria as c on p.IdCategoria=c.id  where titolo like "%' . $filtroUser . '%" OR venditore like "%' . $filtroUser . '%"';
+                $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=idf join categoria as c on p.IdCategoria=idc  where titolo like "%' . $filtroUser . '%" OR venditore like "%' . $filtroUser . '%"';
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -100,7 +105,7 @@ if (isset($_POST["filtroUser"])) {
                         echo "<p class='card-text'>" . $row["descrizione"] . "</p>";
                         echo "<div class='d-flex justify-content-between align-items-center'>";
                         echo "<div class='btn-group'>";
-                        echo "<a href='#' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
+                        echo "<a href='prodotto.php?id=" . $row["id"] . "' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
                         echo "</div>";
                         echo "<h4 class='card-price'>" . $row["prezzo"] . "€</h4>";
                         echo "</div>";
@@ -109,7 +114,7 @@ if (isset($_POST["filtroUser"])) {
                     }
                 }
             } else {
-                $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=f.id join categoria as c on p.IdCategoria=c.id  where 1';
+                $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=idf join categoria as c on p.IdCategoria=idc  where 1';
                 $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
                     echo "<div class='col-md-4'>";
@@ -120,7 +125,7 @@ if (isset($_POST["filtroUser"])) {
                     echo "<p class='card-text'>" . $row["descrizione"] . "</p>";
                     echo "<div class='d-flex justify-content-between align-items-center'>";
                     echo "<div class='btn-group'>";
-                    echo "<a href='#' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
+                    echo "<a href='prodotto.php?id=" . $row["id"] . "' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
                     echo "</div>";
                     echo "<h4 class='card-price'>" . $row["prezzo"] . "€</h4>";
                     echo "</div>";

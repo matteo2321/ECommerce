@@ -28,11 +28,12 @@ if (isset($_POST["filtroUser"])) {
 </head>
 
 <body>
-    <header>
+    <header>    
         <nav>
+            
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="#">Carrello</a></li>
+                <li><a href="index.php"><img src="srcimm\home.jpg" alt="home" width="40" height="40"></a></li>
+                <li><a href="carrello.php"><img src="srcimm\carrello.jpg" alt="home"  width="40" height="40"></a></li>
                 <li><a href="AccountRedirect.php">
                     <?php if (isset($_SESSION["id"])) {
                         echo $_SESSION["nome"].$_SESSION["cognome"];

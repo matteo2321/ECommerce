@@ -25,7 +25,7 @@ session_start();
                 <!-- Login Form -->
                 <h2>Login</h2>
                 <form action="ChkLogin.php" method="post">
-                    <label for="email">eemail:</label>
+                    <label for="email">email:</label>
                     <input type="email" id="email" name="email" required>
 
                     <label for="password">Password:</label>

@@ -32,11 +32,11 @@ if (isset($_POST["filtroUser"])) {
         <nav>
             
             <ul>
-                <li><a href="index.php"><img src="srcimm\home.jpg" alt="home" width="40" height="40"></a></li>
-                <li><a href="carrello.php"><img src="srcimm\carrello.jpg" alt="home"  width="40" height="40"></a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="carrello.php">Carrello</a></li>
                 <li><a href="AccountRedirect.php">
                     <?php if (isset($_SESSION["id"])) {
-                        echo $_SESSION["nome"].$_SESSION["cognome"];
+                        echo $_SESSION["nome"]." ".$_SESSION["cognome"];
                     }
                     else{
                         echo "Accedi";
@@ -54,9 +54,10 @@ if (isset($_POST["filtroUser"])) {
     </header>
     <div class="banner">
         <div class="bs-example">
+            
             <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <?php
+                <?php
                     $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=idf join categoria as c on p.IdCategoria=idc  where 1';
                     $result = $conn->query($sql);
                     $rows = $result->fetch_all(MYSQLI_ASSOC);
@@ -83,6 +84,7 @@ if (isset($_POST["filtroUser"])) {
                     </ol>
                 </div>
             </div>
+            
         </div>
     </div>
     <br>
@@ -150,17 +152,7 @@ if (isset($_POST["filtroUser"])) {
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script>
-            var slides = document.querySelectorAll('#banner .slide');
-            var currentSlide = 0;
-            var slideInterval = setInterval(nextSlide, 3000);
-
-            function nextSlide() {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }
-        </script>
+        
 </body>
 
 </html>

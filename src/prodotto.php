@@ -22,7 +22,7 @@ include("Connection.php");
     <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="#">Carrello</a></li>
+            <li><a href="carrello.php">Carrello</a></li>
             <li><a href="AccountRedirect.php">account<?php //echo $_SESSION["nome"].$_SESSION["cognome"];
                                                         ?></a></li>
         </ul>
@@ -46,13 +46,13 @@ include("Connection.php");
 
         <?php
 
-        $id = $_GET["id"];
-        $sql = "SELECT * from prodotto as p join foto as f on p.IdFoto=idf join categoria as c on p.IdCategoria=idc where p.id=" . $id;
+            $id = $_GET["id"];
+            $sql = "SELECT * from prodotto as p join foto as f on p.IdFoto=idf join categoria as c on p.IdCategoria=idc where p.id=" . $id;
 
 
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
                 echo '<div class="row">';
                 echo '<div class="col-md-6">';
                 echo "<img src='" . $row["path"] . "' class='card-img-top' alt='Immagine prodotto' border='2px'>";
@@ -78,6 +78,15 @@ include("Connection.php");
                 $result = $conn->query($sql2);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
+                            echo '<div class="table-responsive-sm">';
+                            echo '<table class="table table-primary">';
+                            echo '<tbody><tr class="">';
+                            echo '<td scope="row">'.$row["nome"].'</td>';
+                            echo '<td scope="row">'.$row["cognome"].'</td>';
+                            echo '<td scope="row">'.$row["stelle"].'</td>';
+                            echo '<td scope="row">'.$row["text"].'</td>';
+                            echo '</tr></tbody></table></div>';
+
                             
                         }
 
@@ -86,7 +95,9 @@ include("Connection.php");
                     }
 
 
-                echo '<button type="button" class="btn btn-primary">Scrivi un commento</button></div></div></div>';
+                echo '<a href="addCommento.php?idprodotto='.$row["id"].'"class="button">Scrivi un commento...</a>';
+                	
+
             }
         } else echo "ERRORE";
 
@@ -96,8 +107,6 @@ include("Connection.php");
 
 
         ?>
-
-
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

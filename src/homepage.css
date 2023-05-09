@@ -1,35 +1,43 @@
-body,
-h1,
-h2,
-h3,
-p,
-ul,
-li {
-    margin: 0;
-    padding: 0;
-}
+@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
 
-body {
-    font-family: Arial, sans-serif;
+body,
+html {
     background-color: #F8F8F8;
+
+
 }
 
 /*header*/
 header {
-    background-color: #232F3E;
+    background-color: #4170aa;
     color: #FFFFFF;
-    padding: 10px 0;
-    display:flex;
+    padding: 15px 0;
+    padding-top: 10px;
+    display: flex;
     justify-content: flex-start;
+    font-family: "Rockwell", serif;
+
+
 }
 
 nav ul {
     list-style-type: none;
 
+
+}
+
+.col-sm-4 {
+
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 nav ul li {
-    display: inline;
+    display: list-item;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -49,12 +57,13 @@ footer {
 .search-bar {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: left;
+
 }
 
 .search-bar form {
     display: flex;
-    align-items: center;
+    align-items: left;
     background-color: #F0F2F5;
     border-radius: 4px;
     padding: 8px 16px;
@@ -85,8 +94,9 @@ footer {
     height: 300px;
     position: relative;
     overflow: hidden;
-  }
-  .slide {
+}
+
+.slide {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -94,12 +104,83 @@ footer {
     left: 0;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-  }
-  .slide.active {
-    opacity: 1;
-  }
+}
 
-#bannerimg{
+.slide.active {
+    opacity: 1;
+}
+
+#bannerimg {
     width: 5px;
     height: 5px;
 }
+
+#bottoniveri {
+    height: 60px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #91C9FF;
+    border-radius: 6px;
+    outline: none;
+    transition: 1s ease-in-out;
+    width: 100%;
+    
+  }
+
+svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    fill: none;
+    stroke: #fff;
+    stroke-dasharray: 150 480;
+    stroke-dashoffset: 150;
+    transition: 1s ease-in-out;
+    border-radius: 6px;
+
+
+
+
+  }
+  
+#bottoniveri:hover {
+    transition: 1s ease-in-out;
+    background: #4F95DA;
+    border-radius: 6px;
+
+  }
+  
+
+#bottoniveri:hover svg {
+    stroke-dashoffset: -480;
+    border-radius: 6px;
+
+  }
+#bottoniveri:span {
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+    border-radius: 6px;
+
+}
+.center {
+    width: 180px;
+    height: 60px;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 6px;
+ 
+
+}
+#bottoni {
+    width: 100px;
+    height: 70px;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    border-radius: 6px;
+
+  }

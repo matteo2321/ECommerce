@@ -33,6 +33,9 @@ session_start();
 
                     <button type="submit">Accedi</button>
                 </form>
+                <a href="Registration.php">
+                    <h5>Se non sei ancora registrato...</h5>
+                </a>
             </div>
             <div class="col-sm-4"></div>
 

@@ -31,8 +31,8 @@ include("Connection.php");
                     <label for="cognome">Cognome:</label>
                     <input type="text" id="cognome" name="cognome" required>
 
-                    <label for="mail">email:</label>
-                    <input type="email" id="mail" name="mail" required>
+                    <label for="email">email:</label>
+                    <input type="email" id="email" name="email" required>
 
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
@@ -42,9 +42,7 @@ include("Connection.php");
 
                     <button type="submit">Registrati</button>
                 </form>
-                <a href="Login.php">
-                    <h5>Se sei già registrato...</h5>
-                </a>
+                
             </div>
             <div class="col-sm-4"></div>
 

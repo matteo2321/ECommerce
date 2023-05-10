@@ -45,7 +45,8 @@ nav ul li a {
     color: #FFFFFF;
     text-decoration: none;
 }
-li{
+
+li {
     color: white !important;
 }
 
@@ -55,12 +56,23 @@ footer {
     padding: 10px;
     text-align: center;
 }
-.btn{
+
+.btn {
     border: 2px solid white;
     border-radius: 6px;
     color: white;
 }
 
+.card-body {
+    position: relative;
+}
+
+.btn-group {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
 .search-bar {
     display: flex;
@@ -95,17 +107,20 @@ footer {
     font-size: 16px;
     cursor: pointer;
 }
-#divcard{
+
+#divcard {
     border: #232F3E solid 2px;
     border-radius: 6px;
-    padding:15px;
-    height:600px;
+    padding: 15px;
+    height: 600px;
 }
-#imgcard{
-    padding:20px;
+
+#imgcard {
+    padding: 20px;
     border: #ffffff98 solid 2px;
     border-radius: 6px;
 }
-.text-center{
+
+.text-center {
     padding: 20px;
 }

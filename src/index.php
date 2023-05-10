@@ -73,19 +73,19 @@ if (isset($_SESSION["ricerca"])) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='col-xl-4'>";
-                        echo "<div  id='divcard' class='card mb-4 box-shadow'>";
-                        echo "<img id='imgcard' class='card-img-top' src='" . $row["path"] . "' alt='" . $row["titolo"] . "'>";
-                        echo "<div class='card-body'>";
-                        echo "<h4>" . $row["titolo"] . "</h4>";
-                        echo "<div class='d-flex justify-content-between align-items-center'>";
-                        echo "<div class='btn-group'>";
-                        echo "<a id='acquista' href='prodotto.php?id=" . $row["id"] . "' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
+                        echo "<div id='divcard' class='card mb-4 box-shadow'>";
+                            echo "<img id='imgcard' class='card-img-top' src='" . $row["path"] . "' alt='" . $row["titolo"] . "'>";
+                            echo "<div class='card-body'>";
+                                echo "<h4>" . $row["titolo"] . "</h4>";
+                                echo "<div class='d-flex justify-content-between align-items-center'>";
+                                    echo "<h4 class='card-price'>" . $row["prezzo"] . "€</h4>";
+                                    echo "<div class='btn-group'>";
+                                        echo "<a id='acquista' href='prodotto.php?id=" . $row["id"] . "' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
+                                    echo "</div>";
+                                echo "</div>";
+                            echo "</div>";
                         echo "</div>";
-                        echo "<h4 class='card-price'>" . $row["prezzo"] . "€</h4>";
-                        echo "</div>";
-                        echo "</div>";
-                        echo "</div>";
-                        echo "</div>";
+                    echo "</div>";
                     }
                 }
             } else {

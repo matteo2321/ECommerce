@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("Connection.php");
+
 ?>
 <html>
 
@@ -71,10 +72,15 @@ include("Connection.php");
                 echo '<h1>' . $row["titolo"] . '</h1>';
                 echo '<p>' . $row["descrizione"] . '</p>';
 
-                echo '<p><strong>Prezzo: </strong>' . $row["prezzo"] . '€</p>';
-                echo '<button type="button" class="btn btn-primary btn-lg">Aggiungi al carrello</button>';
+                echo '<h4><strong>Prezzo: </strong>' . $row["prezzo"] . '€</h4>';
+                echo "<form action='ChkCarrello.php' method='get'>";
+                echo '<label for="quantita">seleziona quantita</label><br>';
+                echo '<input type="number" name="quantita" id="quantita" required><br><br>';
+                $_SESSION["idProdCarrello"]=$row["id"];
+                echo "<input class='btn btn-primary btn-lg' type='submit' value='Aggiungi al carrello'>";
                 echo '</div>';
                 echo '</div>';
+                echo '</form>';
                 echo '<hr>';
                 echo '<div class="row">';
                 echo '<div class="col-md-12">';
@@ -122,13 +128,12 @@ include("Connection.php");
 
 
 
-
+        
+        
 
 
         ?>
-        
 
-        
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

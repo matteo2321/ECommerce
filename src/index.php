@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 session_start();
 include("Connection.php");
@@ -52,6 +51,7 @@ if (isset($_SESSION["ricerca"])) {
                                     <button type="submit">Cerca</button>
                                 </form>
                             </div>
+
                         </div>
             </ul>
 
@@ -59,7 +59,7 @@ if (isset($_SESSION["ricerca"])) {
 
     </header>
     <div class="container">
-        <h3 class="text-center">Altri Prodotti....</h3>
+        <h3 class="text-center">Prodotti</h3>
 
 
 
@@ -72,14 +72,14 @@ if (isset($_SESSION["ricerca"])) {
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<div class='col-md-4'>";
+                        echo "<div class='col-xl-4'>";
                         echo "<div  id='divcard' class='card mb-4 box-shadow'>";
                         echo "<img id='imgcard' class='card-img-top' src='" . $row["path"] . "' alt='" . $row["titolo"] . "'>";
                         echo "<div class='card-body'>";
                         echo "<h4>" . $row["titolo"] . "</h4>";
                         echo "<div class='d-flex justify-content-between align-items-center'>";
                         echo "<div class='btn-group'>";
-                        echo "<a href='prodotto.php?id=" . $row["id"] . "' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
+                        echo "<a id='acquista' href='prodotto.php?id=" . $row["id"] . "' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
                         echo "</div>";
                         echo "<h4 class='card-price'>" . $row["prezzo"] . "€</h4>";
                         echo "</div>";
@@ -92,19 +92,19 @@ if (isset($_SESSION["ricerca"])) {
                 $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=idf join categoria as c on p.IdCategoria=idc  where 1';
                 $result = $conn->query($sql);
                 while ($row = $result->fetch_assoc()) {
-                    echo "<div class='col-md-4'>";
-                    echo "<div id='divcard' class='card mb-4 box-shadow'>";
-                    echo "<img id='imgcard' class='card-img-top' src='" . $row["path"] . "' alt='" . $row["titolo"] . "'>";
-                    echo "<div class='card-body'>";
-                    echo "<h4>" . $row["titolo"] . "</h4>";
-                    echo "<div class='d-flex justify-content-between align-items-center'>";
-                    echo "<div class='btn-group'>";
-                    echo "<a href='prodotto.php?id=" . $row["id"] . "' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
-                    echo "</div>";
-                    echo "<h4 class='card-price'>" . $row["prezzo"] . "€</h4>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
+                    echo "<div class='col-xl-4'>";
+                        echo "<div id='divcard' class='card mb-4 box-shadow'>";
+                            echo "<img id='imgcard' class='card-img-top' src='" . $row["path"] . "' alt='" . $row["titolo"] . "'>";
+                            echo "<div class='card-body'>";
+                                echo "<h4>" . $row["titolo"] . "</h4>";
+                                echo "<div class='d-flex justify-content-between align-items-center'>";
+                                    echo "<h4 class='card-price'>" . $row["prezzo"] . "€</h4>";
+                                    echo "<div class='btn-group'>";
+                                        echo "<a id='acquista' href='prodotto.php?id=" . $row["id"] . "' class='btn btn-sm btn-outline-secondary'>Acquista</a>";
+                                    echo "</div>";
+                                echo "</div>";
+                            echo "</div>";
+                        echo "</div>";
                     echo "</div>";
                 }
             }

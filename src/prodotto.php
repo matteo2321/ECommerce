@@ -5,7 +5,7 @@ include("Connection.php");
 <html>
 
 <head>
-    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="styles\prodotto.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -26,34 +26,21 @@ include("Connection.php");
                         <div class="col">
 
 
-                            <li><div class="container" id="bottoni"><div class="center"><button id="bottoniveri" class="btn" onclick="window.location.href = 'index.php';">
-                            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
-                                        <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
-                                        <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
-                                    </svg>
-                                    <span>HOME</span></button></div></div></li>
-                            <li><div class="container" id="bottoni"><div class="center"><button id="bottoniveri" class="btn" onclick="window.location.href = 'carrello.php';"><svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
-                                        <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
-                                        <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
-                                    </svg>
-                                    <span>CARRELLO</span></button></div></div></li>
-                            <li><div class="container" id="bottoni"><div class="center"><button id="bottoniveri" class="btn" onclick="window.location.href = 'AccountRedirect.php';"><svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
-                                        <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
-                                        <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
-                                    </svg>
-                                    <span>
+                            <li><button class="btn" onclick="window.location.href = 'index.php?accessoricerca=0'">HOME</button></li>
+                            <li><button class="btn" onclick="window.location.href = 'carrello.php'">CARRELLO</button></li>
+                            <li><button class="btn" onclick="window.location.href = 'AccountRedirect.php'">
                                     <?php if (isset($_SESSION["id"])) {
                                         echo $_SESSION["nome"] . " " . $_SESSION["cognome"];
                                     } else {
                                         echo "Accedi";
                                     }
 
-                                    ?></span></button></div></div></li>
+                                    ?></button></li>
                         </div>
                         <div class="col">
                             <div class="search-bar">
-                                <form action="ricerca.php" method="GET"> 
-                                    <input type="text" name="q" placeholder="Cerca prodotti..." /> <!-- Aggiungi il nome del campo di ricerca come 'q' e il placeholder desiderato -->
+                                <form action="ricerca.php" method="GET">
+                                    <input type="text" name="filtro" placeholder="Cerca prodotti..." /> 
                                     <button type="submit">Cerca</button>
                                 </form>
                             </div>
@@ -66,19 +53,19 @@ include("Connection.php");
 
 <body>
     <div class="container">
-
+    <br><br>
         <?php
 
         $id = $_GET["id"];
         $sql = "SELECT * from prodotto as p join foto as f on p.IdFoto=idf join categoria as c on p.IdCategoria=idc where p.id=" . $id;
 
-
+                                   
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="row">';
                 echo '<div class="col-md-6">';
-                echo "<img src='" . $row["path"] . "' class='card-img-top' alt='Immagine prodotto' border='2px'>";
+                echo "<img id='imgcard' src='" . $row["path"] . "' class='card-img-top' alt='Immagine prodotto' border='2px'>";
                 echo '</div>';
                 echo '<div class="col-md-6">';
                 echo '<h1>' . $row["titolo"] . '</h1>';

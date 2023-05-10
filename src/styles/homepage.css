@@ -45,12 +45,20 @@ nav ul li a {
     color: #FFFFFF;
     text-decoration: none;
 }
+li{
+    color: white !important;
+}
 
 footer {
     background-color: #232F3E;
     color: #FFFFFF;
     padding: 10px;
     text-align: center;
+}
+.btn{
+    border: 2px solid white;
+    border-radius: 6px;
+    color: white;
 }
 
 
@@ -75,7 +83,6 @@ footer {
     background-color: transparent;
     padding: 8px;
     font-size: 16px;
-    color: #333;
 }
 
 .search-bar button[type="submit"] {
@@ -88,99 +95,14 @@ footer {
     font-size: 16px;
     cursor: pointer;
 }
-
-#banner {
-    width: 100%;
-    height: 300px;
-    position: relative;
-    overflow: hidden;
+#divcard{
+    border: #232F3E solid 2px;
+    border-radius: 6px;
+    padding:15px;
+    height:550px;
 }
-
-.slide {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+#imgcard{
+    padding:20px;
+    border: #232f3e98 solid 2px;
+    border-radius: 6px;
 }
-
-.slide.active {
-    opacity: 1;
-}
-
-#bannerimg {
-    width: 5px;
-    height: 5px;
-}
-
-#bottoniveri {
-    height: 60px;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid #91C9FF;
-    border-radius: 6px;
-    outline: none;
-    transition: 1s ease-in-out;
-    width: 100%;
-    
-  }
-
-svg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    fill: none;
-    stroke: #fff;
-    stroke-dasharray: 150 480;
-    stroke-dashoffset: 150;
-    transition: 1s ease-in-out;
-    border-radius: 6px;
-
-
-
-
-  }
-  
-#bottoniveri:hover {
-    transition: 1s ease-in-out;
-    background: #4F95DA;
-    border-radius: 6px;
-
-  }
-  
-
-#bottoniveri:hover svg {
-    stroke-dashoffset: -480;
-    border-radius: 6px;
-
-  }
-#bottoniveri:span {
-    color: white;
-    font-size: 18px;
-    font-weight: 100;
-    border-radius: 6px;
-
-}
-.center {
-    width: 180px;
-    height: 60px;
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 6px;
- 
-
-}
-#bottoni {
-    width: 100px;
-    height: 70px;
-    margin: 0 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    border-radius: 6px;
-
-  }

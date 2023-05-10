@@ -90,10 +90,16 @@ include("Connection.php");
                 $sql2 = "SELECT * from commento as c join utente as u on c.IdUtente=u.id join prodotto as p on c.IdProdotto =p.id where p.id= " . $id;
                 $result = $conn->query($sql2);
                 if ($result->num_rows > 0) {
+                    echo '<div>';
+                        echo '<table id="commenti">';
+                        echo '<thead><tr><th>Nome</th>';
+                        echo '<th>Cognome</th>';
+                        echo '<th>Stelle</th>';
+                        echo '<th>Descrizione</th></tr></thead><tbody>';
                     while ($row = $result->fetch_assoc()) {
-                        echo '<div>';
-                        echo '<table>';
-                        echo '<tbody><tr>';
+                        
+
+                        echo '<tr>';
                         echo '<td>' . $row["nome"] . '</td>';
                         echo '<td>' . $row["cognome"] . '</td>';
                         echo '<td>';
@@ -105,8 +111,9 @@ include("Connection.php");
 
 
                         echo '<td>' . $row["text"] . '</td>';
-                        echo '</tr></tbody></table></div>';
+                        echo '</tr>';
                     }
+                    echo '</tbody></table></div>';
                 } else {
                     echo '<p>Ancora nessun commento...</p>';
                 }
@@ -119,6 +126,9 @@ include("Connection.php");
 
 
         ?>
+        
+
+        
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

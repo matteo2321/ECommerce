@@ -105,7 +105,24 @@ footer {
     border-radius: 20px;
     padding: 15px;
 }
-table,th,td{
-    border: #232F3E solid 2px;
-    border-radius: 15px;
-}
+#commenti {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #commenti td, #commenti th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #commenti tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #commenti tr:hover {background-color: #ddd;}
+  
+  #commenti th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:#4170aa;
+    color: white;
+  }

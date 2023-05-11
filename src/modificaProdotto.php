@@ -15,7 +15,6 @@ if (isset($_SESSION["id"])) {
 }
 
 ?>
-
 <html>
 
 <head>
@@ -61,67 +60,41 @@ if (isset($_SESSION["id"])) {
 
     <body>
         <div class="container">
+            <h3 class="text-center">Modifica:</h3>
 
 
 
             <div class="row">
 
-
                 <?php
-                if ($admin == true) {
-                    #admin part
-                ?>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm">
-                            <li><button class="btn" onclick="window.location.href = 'carrello.php'">CARRELLO</button></li>         
-                            <li><button class="btn" onclick="window.location.href = 'AggiungiProdotto.php'">AGGIUNGI PRODOTTO</button></li>                            
-                            <li><button class="btn" onclick="window.location.href = 'logout.php'">Log out</button></li>                            
+                $sql = 'SELECT * from prodotto as p join foto as f on p.IdFoto=idf join categoria as c on p.IdCategoria=idc  where id=' . $_GET["id"];
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $_SESSION["idModProdotto"]=$row["id"];
+                        echo '<form action="ChkModifica.php" method="get">';
+                        echo '<br><label for="titolo"><strong>Titolo:</strong><br>' . $row["titolo"] . '</label>';
+                        echo '<br><input type="text" name="titolo" id="titolo">';
+                        echo '<br><label for="descrizione"><strong>Descrizione:</strong><br>' . $row["descrizione"] . '</label>';
+                        echo '<br><textarea name="descrizione" rows="5" cols="80"></textarea>';
+                        echo '<br><label for="venditore"><strong>Venditore:</strong><br>' . $row["venditore"] . '</label>';
+                        echo '<br><input type="text" name="venditore" id="venditore">';
+                        echo '<br><label for="quantita"><strong>Quantità:</strong><br>' . $row["quantitaMag"] . '</label>';
+                        echo '<br><input type="number" name="quantita" id="quantita">';
+                        echo '<br><label for="prezzo"><strong>Prezzo:</strong><br>' . $row["prezzo"] . '</label>';
+                        echo '<br><input type="number" name="prezzo" id="prezzo"><br><br>';
+                        echo '<button type="submit" class="btn btn-primary">Confirm changes</button>';
 
-                            </div>
-                            <div class="col-sm">
-                            </div>
-                            <div class="col-sm">
-                            </div>
-                        </div>
-                    </div>
-                <?php
-                } else {
-                    ?>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm">
-                            <li><button class="btn" onclick="window.location.href = 'carrello.php'">CARRELLO</button></li>         
-                        
-                            <li><button class="btn" onclick="window.location.href = 'logout.php'">Log out</button></li>                            
-                   
-                            </div>
-                            <div class="col-sm">
-                            </div>
-                            <div class="col-sm">
-                            </div>
-                        </div>
-                    </div>
-                    <?php
+
+
+
+
+                        echo '</form>';
+                    }
                 }
                 ?>
-
-
-
-
-
-
             </div>
-
-            <footer>
-                <p>ECommerce. Tutti i diritti riservati.</p>
-            </footer>
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-
+        </div>
     </body>
 
 </html>

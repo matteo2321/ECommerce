@@ -126,20 +126,22 @@ if (isset($_SESSION["id"])) {
 </body>
 <script>
     function InsertCategoriaPersonalizzata() {
-        alert(document.getElementById('categoriapers').value);
+        
+        categoria=encodeURIComponent(document.getElementById('categoriapers').value);
+        $.ajax({
+            url: "inserisci_categoria_pers.php",
+            type:"GET",
+            data:{categoriapers:categoria},
+            dataType:"JSON",
+            success:function(res){
+                location.reload();
+            },
+            error:function(xhr,status,error){
 
-        var request = new XMLHttpRequest();
-        var url = "inserisci_categoria_pers.php?categoriapers=" + encodeURIComponent(document.getElementById('categoriapers').value);
-
-        request.open("GET", url);
-        request.onreadystatechange = function() {
-            if (request.readyState === 4 && request.status === 200) {
-                alert("mandata")
-
-                
             }
-        };
-        request.send();
+                
+
+        })
     }
 
 </script>

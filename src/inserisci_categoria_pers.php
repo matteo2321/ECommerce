@@ -2,11 +2,18 @@
 session_start();
 include("Connection.php");
 
-$nome = $_GET["nome"];
-echo $_GET["nome"];
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    $categoria = $_GET["categoriapers"];
 
-// esegui la query per l'inserimento della categoria
-$sql = "INSERT INTO categoria (nome) VALUES ('".$nome."')";
-$conn->query($sql);
+    $logFile = fopen("log.log", "a");
+    $message = date("Y-m-d H:i:s") . $categoria;
+    fwrite($logFile, $message . "\n");
+    fclose($logFile);
+
+
+
+    $sql = "INSERT INTO categoria (nome) VALUES ('".$categoria."')";
+    $conn->query($sql);
+}
 
 ?>
